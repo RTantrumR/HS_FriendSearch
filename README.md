@@ -27,7 +27,7 @@ friends stay.
 The setup brings [BepInEx](https://github.com/BepInEx/BepInEx), the mod loader, if your Hearthstone doesn't
 have it yet. If it's already there (from another mod), it's left as it is.
 
-**Requirements:** Windows, Hearthstone for PC (made for patch 36.6).
+**Requirements:** Windows, Hearthstone for PC (made for patch 37.0.1).
 
 ## Uninstall
 
@@ -41,15 +41,8 @@ another mod still uses it or it was there before.
 
 ## About
 
-An unofficial, client-side mod, not supported by Blizzard. It changes only how your own friends list is shown:
-it never touches a match, gives no gameplay advantage, and sends nothing anywhere.
-
-## Credits
-
-- [BepInEx](https://github.com/BepInEx/BepInEx), [HarmonyX](https://github.com/BepInEx/HarmonyX) and
-  [Unity Doorstop](https://github.com/NeighTools/UnityDoorstop). Their licenses come with the setup.
-- Built with [Claude Code](https://claude.com/claude-code) (Claude Opus 5.5), directed and tested by RTantrumR.
-- The bar's art, fonts and text are Hearthstone's own, loaded from your installation.
+An unofficial, client-side mod, not supported by Blizzard. Note that BepInEx(the tool used to integrate this addon into HS) is a gray zone of Hearthstone's ToU. 
+Blizzard does not support it but has never issued any restrictive action against such tools. 
 
 ## License
 
