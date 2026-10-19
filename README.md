@@ -39,8 +39,10 @@ another mod still uses it or it was there before.
 - No search bar: check that `BepInEx\LogOutput.log` in your Hearthstone folder contains `HS Friend Search loaded`.
 - After a Hearthstone patch the mod can stop working until it's updated.
 
-Client mods are against Blizzard's terms of use; use it at your own risk. The mod changes only how your own
-friends list is shown, and sends nothing anywhere.
+## About
+
+An unofficial, client-side mod, not supported by Blizzard. It changes only how your own friends list is shown:
+it never touches a match, gives no gameplay advantage, and sends nothing anywhere.
 
 ## Credits
 
