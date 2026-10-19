@@ -15,6 +15,8 @@ installers share BepInEx.
   copy of the list's own header row. Traps: leave the text input's layer unset (else the text is invisible);
   never close the list from Esc (it swallowed the next click). See [docs/search.md](docs/search.md).
 - **Installer:** `installer/build.ps1` → Inno Setup exe; BepInEx files are `sharedfile`-counted, so either
-  addon's uninstall leaves BepInEx for the other. Admin only. See [docs/installer.md](docs/installer.md).
+  addon's uninstall leaves BepInEx for the other. Admin only. Linux (Wine): `installer/build_linux.py` → a tarball
+  whose `install.sh` sets the `version` DLL override in the prefix's `user.reg`; no macOS (token-login route
+  only). See [docs/installer.md](docs/installer.md).
 - **Repo:** public on GitHub; `docs/` is a nested private repo (`RTantrumR/HS_FriendSearch-docs`), ignored
   here. Version: `<Version>` in `plugin/HsFriendSearch.csproj` (plugin and exe both read it).
