@@ -46,5 +46,7 @@ Blizzard does not support it but has never issued any restrictive action against
 
 ## License
 
-Copyright (c) 2026 RTantrumR. All rights reserved; see [LICENSE](LICENSE). Not affiliated with or endorsed by
-Blizzard Entertainment. Hearthstone is a trademark of Blizzard Entertainment, Inc.
+Copyright 2026 RTantrumR. Licensed under the [Apache License 2.0](LICENSE); see [NOTICE](NOTICE). Hearthstone's
+art, fonts and text that the mod shows stay Blizzard's: they're loaded from your own installation, and the
+license doesn't cover them. Not affiliated with or endorsed by Blizzard Entertainment. Hearthstone is a
+trademark of Blizzard Entertainment, Inc.

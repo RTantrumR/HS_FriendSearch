@@ -46,6 +46,7 @@ Source: "stage\bepinex\*"; DestDir: "{app}"; Flags: onlyifdoesntexist sharedfile
 Source: "stage\plugin\com.rtantrumr.friendsearch.dll"; DestDir: "{app}\BepInEx\plugins"; Flags: ignoreversion
 Source: "licenses\*"; DestDir: "{app}\BepInEx\HSFriendSearch\licenses"; Flags: ignoreversion
 Source: "..\LICENSE"; DestDir: "{app}\BepInEx\HSFriendSearch\licenses"; DestName: "LICENSE.txt"; Flags: ignoreversion
+Source: "..\NOTICE"; DestDir: "{app}\BepInEx\HSFriendSearch\licenses"; DestName: "NOTICE.txt"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\Uninstall HS Friend Search"; Filename: "{uninstallexe}"

@@ -14,4 +14,4 @@ uninstall only when no other installed program counts on them):
   https://github.com/mono/mono - Mono-class-libraries.txt
 - UniTask (BepInEx\unstripped_corlib\UniTask*.dll) - MIT - https://github.com/Cysharp/UniTask - UniTask.txt
 
-HS Friend Search itself (the plugin): see LICENSE.txt in this folder.
+HS Friend Search itself (the plugin): Apache License 2.0, see LICENSE.txt and NOTICE.txt in this folder.
