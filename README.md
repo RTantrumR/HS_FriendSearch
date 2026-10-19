@@ -29,6 +29,14 @@ have it yet. If it's already there (from another mod), it's left as it is.
 
 **Requirements:** Windows, Hearthstone for PC (made for patch 37.0.1).
 
+### Linux (Hearthstone through Wine: Lutris, Bottles, Steam/Proton)
+
+1. Download `HSFriendSearch-<version>-linux.tar.gz` from [Releases](../../releases) and unpack it.
+2. Close Battle.net, then run `bash install.sh` in the unpacked folder. It finds Hearthstone in the usual Wine
+   prefixes (or pass the path: `bash install.sh "/path/to/Hearthstone"`) and sets the Wine DLL override BepInEx
+   needs.
+3. Start Hearthstone from Battle.net as usual. To remove it: `bash uninstall.sh`.
+
 ## Uninstall
 
 Windows Settings → Apps → HS Friend Search → Uninstall (or the Start menu entry). BepInEx is removed too, unless
