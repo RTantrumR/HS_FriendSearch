@@ -9,3 +9,6 @@ obj/
 # Installer build output
 installer/stage/
 installer/out/
+
+# Docs live in their own private repo (RTantrumR/HS_FriendSearch-docs)
+docs/
