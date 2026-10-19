@@ -1,0 +1,11 @@
+# IDE
+.idea/
+.vs/
+
+# .NET build output
+bin/
+obj/
+
+# Installer build output
+installer/stage/
+installer/out/
