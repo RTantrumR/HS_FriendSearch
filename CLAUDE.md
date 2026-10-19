@@ -4,7 +4,7 @@ A search bar at the top of Hearthstone's friends list: a BepInEx plugin, release
 from HS Replay Watcher (`E:\PYPY\Test_HS_Server`), whose recon and client knowledge it reuses. The two
 installers share BepInEx.
 
-- **Client:** `E:\Games\Hearthstone`, build 36.6, Unity 6000.3.11 Mono x64, BepInEx 5.4.23.5 (shared with the
+- **Client:** `E:\Games\Hearthstone`, client 37.0 (37.0.0.255130 in `.product.db`), Unity 6000.3.11 Mono x64, BepInEx 5.4.23.5 (shared with the
   Replay Watcher's and HS_CardExtractor's plugins; don't break their setup). Launch via Battle.net Play.
 - **Layout:** `plugin/` (C#, net48; `dotnet build -c Release --no-incremental` builds into HS's
   `BepInEx\plugins`, so close HS first) · `tests/` (`dotnet run --project tests`, the match rule outside the
