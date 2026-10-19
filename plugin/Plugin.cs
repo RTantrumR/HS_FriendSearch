@@ -5,7 +5,8 @@ using HarmonyLib;
 
 namespace HsFriendSearch
 {
-    [BepInPlugin("com.rtantrumr.friendsearch", "HS Friend Search", "0.1.0")]
+    // Name and version come from HsFriendSearch.csproj (BepInEx.PluginInfoProps), as the installer's do.
+    [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
     public class Plugin : BaseUnityPlugin
     {
         internal static ManualLogSource Log;
@@ -16,7 +17,7 @@ namespace HsFriendSearch
             Log = Logger;
             DumpFrame = Config.Bind("Debug", "DumpFrame", false,
                 "Write the friends list's object tree to BepInEx/friendlist_dump.txt each time the list starts.");
-            new Harmony("com.rtantrumr.friendsearch").PatchAll(typeof(Plugin).Assembly);
+            new Harmony(MyPluginInfo.PLUGIN_GUID).PatchAll(typeof(Plugin).Assembly);
             Log.LogInfo("HS Friend Search loaded");
         }
     }
