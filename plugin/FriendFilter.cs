@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Blizzard.GameService.SDK.Client.Integration;
 using HarmonyLib;
 
 namespace HsFriendSearch
@@ -22,6 +23,12 @@ namespace HsFriendSearch
 
         private static string s_query = "";
         private static readonly Dictionary<object, int> s_ranks = new Dictionary<object, int>();
+
+        // The players the list has a Friend row for, rebuilt after every re-sort. The game's Recent Players
+        // section also lists friends (recently chatted, challenged, new friend); the flat search shows them once.
+        private static readonly HashSet<BnetPlayer> s_friendRows = new HashSet<BnetPlayer>();
+        private static readonly HashSet<BnetAccountId> s_friendIds = new HashSet<BnetAccountId>();
+        private static bool s_friendsKnown;
 
         public static bool Active => s_query.Length > 0;
 
@@ -49,8 +56,36 @@ namespace HsFriendSearch
         {
             int count = 0;
             foreach (var item in AllItems(frame))
-                if (!HiddenByEditMode(frame, item) && Rank(item) > FriendMatch.None) count++;
+                if (Shown(frame, item)) count++;
             return count;
+        }
+
+        private static bool Shown(FriendListFrame frame, FriendListFrame.FriendListItem item) =>
+            !HiddenByEditMode(frame, item) && Rank(item) > FriendMatch.None && !RepeatsFriend(frame, item);
+
+        /// <summary>A recent or nearby row for someone who also has a Friend row.</summary>
+        private static bool RepeatsFriend(FriendListFrame frame, FriendListFrame.FriendListItem item)
+        {
+            if (item.IsHeader) return false;
+            var player = item.GetRecentPlayer() ?? item.GetNearbyPlayer();
+            if (player == null) return false;
+            if (!s_friendsKnown)
+            {
+                s_friendRows.Clear();
+                s_friendIds.Clear();
+                foreach (var row in AllItems(frame))
+                {
+                    var friend = row.IsHeader ? null : row.GetFriend();
+                    if (friend == null) continue;
+                    s_friendRows.Add(friend);
+                    var friendId = friend.GetAccountId();
+                    if (friendId != null) s_friendIds.Add(friendId);
+                }
+                s_friendsKnown = true;
+            }
+            if (s_friendRows.Contains(player)) return true;
+            var id = player.GetAccountId();
+            return id != null && s_friendIds.Contains(id);
         }
 
         /// <summary>The game's remove-friends mode hides recent and nearby players; the search keeps that.</summary>
@@ -110,8 +145,15 @@ namespace HsFriendSearch
                 var all = AllItems(frame);
                 if (allItemsIndex < 0 || allItemsIndex >= all.Count) return;
                 var item = all[allItemsIndex];
-                __result = !HiddenByEditMode(frame, item) && Rank(item) > FriendMatch.None;
+                __result = Shown(frame, item);
             }
+        }
+
+        /// <summary>Friends or recent players changed, or the query did: the Friend rows are read again.</summary>
+        [HarmonyPatch(typeof(FriendListFrame), "SortAndRefreshTouchList")]
+        private static class ResortPatch
+        {
+            private static void Prefix() => s_friendsKnown = false;
         }
 
         [HarmonyPatch(typeof(FriendListFrame), "ItemsSortCompare")]

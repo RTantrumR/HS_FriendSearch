@@ -32,6 +32,10 @@
       <HintPath>$(HearthstoneManagedPath)Assembly-CSharp.dll</HintPath>
       <Private>false</Private>
     </Reference>
+    <Reference Include="blizzard.bgsclient">
+      <HintPath>$(HearthstoneManagedPath)blizzard.bgsclient.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
     <Reference Include="Blizzard.T5.Core">
       <HintPath>$(HearthstoneManagedPath)Blizzard.T5.Core.dll</HintPath>
       <Private>false</Private>
