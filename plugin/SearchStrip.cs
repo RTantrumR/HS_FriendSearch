@@ -175,7 +175,9 @@ namespace HsFriendSearch
             m_wantFocus = false;
             m_text = "";
             FriendFilter.Clear();
-            if (m_typing) UniversalInputManager.Get()?.CancelTextInput(m_bar);
+            // Unconditional: the input is ours until released, focused or not, and the call does nothing
+            // when another owner has it.
+            UniversalInputManager.Get()?.CancelTextInput(m_bar);
             m_typing = false;
             ShowLabel();
         }
@@ -233,8 +235,11 @@ namespace HsFriendSearch
             ShowLabel();
         }
 
+        /// <summary>An unfocused input stays active and the game keeps drawing its text (over the bar's label,
+        /// and on screen after the list hides), so it is released; a click on the bar takes it back.</summary>
         private void OnInputUnfocused()
         {
+            UniversalInputManager.Get()?.CancelTextInput(m_bar);
             m_typing = false;
             ShowLabel();
         }
